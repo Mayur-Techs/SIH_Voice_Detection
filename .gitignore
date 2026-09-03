@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+.env
+dist/
+build/
+
+# Node
+node_modules/
+.next/
+.env.local
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# HuggingFace model cache (large, not committed)
+# cached automatically at ~/.cache/huggingface/
+
+# IDE
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-ponytail",
+    "ecc-universal",
+    "opencode-orchestrator",
+    "opencode-adaptive-thinking",
+    "opencode-self-improve"
+  ],
+  "mcp": {
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "C:/Users/MAYUR/Documents"],
+      "enabled": true
+    },
+    "memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "enabled": true
+    },
+    "github": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "enabled": true
+    }
+  },
+  "skills": {
+    "paths": [".opencode/skills", "~/.claude/skills"]
+  },
+  "permission": {
+    "bash": {
+      "*": "ask"
+    },
+    "skill": "allow"
+  },
+  "agents": {
+    "code-reviewer": {
+      "description": "Senior engineer that reviews code for bugs, style, and security",
+      "mode": "subagent",
+      "tools": {
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "bash": true,
+        "edit": true
+      },
+      "prompt": "You are a senior software engineer performing code review. Be thorough, check for bugs, style issues, security vulnerabilities, and architectural problems."
+    },
+    "architect": {
+      "description": "Designs systems and plans implementation before code",
+      "mode": "subagent",
+      "tools": {
+        "read": true,
+        "grep": true,
+        "glob": true
+      },
+      "prompt": "You are a systems architect. Design solutions and plan implementations. Question necessity before suggesting code. Keep solutions minimal and clean."
+    },
+    "debugger": {
+      "description": "Debugs errors and bugs with root-cause analysis",
+      "mode": "subagent",
+      "tools": {
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "bash": true
+      },
+      "prompt": "You are a debugging specialist. Find root causes of errors with systematic analysis."
+    }
+  }
+}
